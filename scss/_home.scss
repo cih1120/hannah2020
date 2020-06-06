@@ -11,7 +11,7 @@ body::-webkit-scrollbar {
   display: none !important;
 }
 body {
-  -ms-overflow-style: none !important];
+  -ms-overflow-style: none !important;
 }
 
 html {
@@ -55,10 +55,10 @@ overflow: auto;
 .burger{
   width: 18px;
   height: 18px;
-  right:15px;
+  left:15px;
   @include media-breakpoint-up(lg) {
     top:35px;
-    right: 3vw;
+    left: 3vw;
    }
 }
 // navBar
@@ -155,34 +155,37 @@ overflow: auto;
 .bd-callout-primary{
   border-left:5px solid #F2A7A7 !important;
 }
-.grid{
-  width: 100%;
-  height: 100%;
-}
 
 .marquee-container{
   overflow: hidden;
+
+}
+.content{
+  display:inline;
+  width: 400px;
   height: 400px;
 }
-
-.cell {
-  display: inline-block;
-  font-size: 2rem; /* fix that elegant/ugly font-size: 0 hack */
-  position: relative;
-  width: 100%;
-  height: 100%;
-  .content{
-    display: block;
-    position: absolute;
-    top: .5rem;
-    bottom: .5rem;
-    left: .5rem;
-    right: .5rem;
-    width: 400px;
-    background-size: cover;
-    box-shadow: 0 2px 10px -10px #ccc;
+@keyframes marquee-key {
+  0% {
+    transform: translate3d(0px, 0px, 0px);
+    animation-timing-function: linear;
+  }
+  100% {
+    transform: translate3d(-3800px, 0px, 0px);
+    animation-timing-function: linear;
   }
 }
+.marquee{
+  transform: translate(0px,0);
+  animation-name:marquee-key;
+  animation-duration: 30s;
+  animation-timing-function:ease-in-out;
+  animation-iteration-count:infinite;
+  animation-direction:alternate;
+  animation-fill-mode:forwards;
+  animation-play-state:running;
+}
+
 
 // 跑馬燈
 .cover{
